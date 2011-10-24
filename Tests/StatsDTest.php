@@ -28,7 +28,10 @@ class StatsDTest extends \PHPUnit_Framework_TestCase
      */
     public function testTiming()
     {
-        $this->statsd->timing("test.timing", microtime(true), 1);
+        $t1 = microtime(true);
+        $this->statsd->timing("test.timing",microtime(true) - $t1);
+        $this->statsd->timing("test.timing", microtime(true) - $t1);
+        $this->statsd->timing("test.timing", microtime(true) - $t1);
     }
 
     /**
@@ -36,7 +39,8 @@ class StatsDTest extends \PHPUnit_Framework_TestCase
      */
     public function testIncrement()
     {
-        $this->statsd->increment("test.increment", 2);
+        $this->statsd->updateStats("test.increment", "5", "1");
+        $this->statsd->increment("test.increment", 12);
     }
 
     /**
@@ -44,6 +48,7 @@ class StatsDTest extends \PHPUnit_Framework_TestCase
      */
     public function testDecrement()
     {
+        $this->statsd->updateStats("test.decrement", "5", "1");
         $this->statsd->decrement("test.decrement", 2);
     }
 
@@ -52,7 +57,7 @@ class StatsDTest extends \PHPUnit_Framework_TestCase
      */
     public function testUpdateStats()
     {
-        $this->statsd->updateStats("test.updateStat", "4", "1");
+        $this->statsd->updateStats("test.updateStat", "5", "1");
     }
 
 }

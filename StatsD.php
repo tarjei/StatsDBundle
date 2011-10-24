@@ -82,7 +82,6 @@ class StatsD
     public function send($data, $sampleRate=1)
     {
         if ($this->noop) {
-            print "Noop: ending\n";
             return;
         }
 
@@ -100,7 +99,6 @@ class StatsD
         }
 
         if (empty($sampledData)) {
-            print "Empty sample\n";
             return;
         }
 
@@ -108,21 +106,18 @@ class StatsD
         try {
             $host =$this->host;
             $port = $this->port;
-            
-            //$socket = socket_create(AF_INET, SOCK_DGRAM, SOL_UDP));
 
-            $fp = fsockopen("udp://$host", $port, $errno, $errstr);
-            if (!$fp) {
+            $socket = socket_create(AF_INET, SOCK_DGRAM, SOL_UDP);
+            if (!$socket) {
                 throw new \Exception("Could not open statd connection to $host:$port");
             }
-            print "Sending to: $host:" . $port . "\n";
             foreach ($sampledData as $stat => $value) {
-                print "Sending: $stat:$value\n";
-                fwrite($fp, "$stat:$value");
+                $msg = "$stat:$value";
+                socket_sendto($socket, $msg, strlen($msg), 0, $host, $port); 
             }
-            fclose($fp);
+            socket_close($socket);
         } catch (\Exception $e) {
-            print "Ex: " . $e->getMessage();
+            //print "Exception in StatsD: " . $e->getMessage();
         }
     }
 

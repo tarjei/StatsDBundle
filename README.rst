@@ -71,7 +71,9 @@ For more info see the StatsD.php file.
 
 TODO
 ----
-
+* Add loggingservice into the mix
+* Consider how we should handle empty stats
+* better example
 Contributors
 -----------------
 In lieu of a list of contributors, check out the commit history for the project.
