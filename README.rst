@@ -3,7 +3,7 @@ StatsDBundle
 
 This is a simple bundle that creates a statsd service that you can use to send counters via statsd to graphite.
 
-It is based on the example statsd client found in the statd package:https://github.com/etsy/statsd
+It is based on the example statsd client found in the statd package: https://github.com/etsy/statsd
 
 
 Instalation
