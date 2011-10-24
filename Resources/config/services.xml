@@ -11,7 +11,7 @@
     </parameters>
 
     <services>
-        <service id="statsd" class="\SM\StatsDBundle\StatsD">
+        <service id="statsd" class="SM\StatsDBundle\StatsD">
             <argument>%statsd.host%</argument>
             <argument>%statsd.port%</argument>
             <argument>%statsd.noop%</argument>
