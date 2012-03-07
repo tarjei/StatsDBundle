@@ -1,0 +1,24 @@
+{
+    "name": "tarjei/StatsDBundle",
+    "type": "symfony-bundle",
+    "description": "Bundle for sending statistics to graphite via statsd.",
+    "keywords": ["statsd", "graphite", "stats"],
+    "license": "MIT",
+    "version": "master",
+    "authors": [
+        {
+            "name": "Tarjei Huse",
+            "email": "tarjei.huse@gmail.com"
+        },
+    ],
+    "require": {
+        "php": ">=5.3.2",
+        "symfony/framework-bundle": "2.*",
+    },
+    "autoload": {
+        "psr-0": {
+            "SM\\StatsDBundle": ""
+        }
+    },
+    "target-dir": "SM\\StatsDBundle"
+}
