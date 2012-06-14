@@ -20,5 +20,5 @@
             "SM\\StatsDBundle": ""
         }
     },
-    "target-dir": "SM\\StatsDBundle"
+    "target-dir": "SM/StatsDBundle"
 }
