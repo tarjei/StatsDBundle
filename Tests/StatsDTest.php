@@ -1,4 +1,4 @@
-l<?php
+<?php
 namespace SM\StatsDBundle;
 
 
