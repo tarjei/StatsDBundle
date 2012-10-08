@@ -26,6 +26,17 @@ class StatsD
         $this->send(array($stat => "$time|ms"), $sampleRate);
     }
 
+    /**
+     *  Log gauge information
+     * 
+     * @param string $stat The metric to in log timing info for.
+     * @param float $magnitude the value to set gauge.
+     * @param float|1 $sampleRate $sampleRate the rate (0-1) for sampling.
+     */
+    public function gauge($stat, $magnitude, $sampleRate=1)
+    {
+        $this->send(array($stat => "$magnitude|g"), $sampleRate);
+    }
 
     /**
      * Increments one or more stats counters
@@ -51,7 +62,7 @@ class StatsD
     {
         $this->updateStats($stats, -1, $sampleRate);
     }
-
+    
 
     /**
      * Updates one or more stats counters by arbitrary amounts.
