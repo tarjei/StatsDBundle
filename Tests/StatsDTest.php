@@ -1,4 +1,4 @@
-<?php
+l<?php
 namespace SM\StatsDBundle;
 
 
@@ -59,5 +59,12 @@ class StatsDTest extends \PHPUnit_Framework_TestCase
     {
         $this->statsd->updateStats("test.updateStat", "5", "1");
     }
-
+    
+    /**
+     * @todo Implement testGaugeStats().
+     */
+    public function testGaugeStats()
+    {
+        $this->statsd->gauge("test.gaugeStat", "5", "1");
+    }
 }
